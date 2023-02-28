@@ -22,12 +22,11 @@
 					.single();
 				if (error) throw error;
 				message = '';
-				const res = await supabaseChannel.send({
+				await supabaseChannel.send({
 					type: 'broadcast',
 					event: 'new-message',
 					payload: { data }
 				});
-				console.log('res', res);
 			}
 		} catch (error) {}
 	};

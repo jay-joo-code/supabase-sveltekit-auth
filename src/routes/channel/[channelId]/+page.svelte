@@ -28,7 +28,6 @@
 	const subscribe = () => {
 		supabaseChannel
 			.on('broadcast', { event: 'new-message' }, ({ payload }) => {
-				console.log('payload', payload);
 				messages = messages ? [...messages, payload?.data] : [payload?.data];
 			})
 			.subscribe();
@@ -37,8 +36,6 @@
 	onMount(() => {
 		subscribe();
 	});
-
-	$: console.log('messages', messages);
 </script>
 
 <div>
